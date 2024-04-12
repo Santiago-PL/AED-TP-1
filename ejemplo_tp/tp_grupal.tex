@@ -80,6 +80,34 @@
 \end{proc}
 
 \vspace{1.2cm}
+%  \  Ejercicio 3 (opcion 2 - Santiago)
+
+\begin{proc}{trayectoriaExtrañaEscalera}{\In trayectoria : \TLista{\float}}{\bool}
+	\requiere{|trayectoria| > 0}
+	\asegura{\\
+ res = true \Leftrightarrow \\
+ (|trayectoria| = 1)  \vee  \\
+(|trayectoria| = 2 \yLuego (trayectoria[0] \neq trayectoria[1] )) \vee \\
+(|trayectoria| >= 3 \yLuego \\
+((ContadorMayoresExtremoMedio(trayectoria) + \\
+ContadorMayoresExtremoIzq(trayectoria) + \\
+ContadorMayoresExtremoDer(trayectoria)) = 1))
+ 
+ }
+\vspace{0.8cm}
+ \end{proc}
+ \aux{ContadorMayoresExtremoMedio}{in trayectoria : {\TLista{\float}}}{\ent} {\\
+\sum\limits_{i=1} \limits^{|trayectoria|-2} 
+({\IfThenElse{(trayectoria[i-1] < trayectoria[i]) \land (trayectoria[i]>trayectoria[i+1]) \hspace{0.15cm} = \hspace{0.15cm} True}{1}{0}})}
+\vspace{0.8cm}
+\aux{ContadorMayoresExtremoIzq}{in trayectoria : {\TLista{\float}}}{\ent} {\\
+{\IfThenElse{(trayectoria[0] > trayectoria[1]) \hspace{0.15cm} = \hspace{0.15cm} True}{1}{0}})}
+
+\vspace{0.8cm}
+\aux{ContadorMayoresExtremoDer}{in trayectoria : {\TLista{\float}}}{\ent} {\\
+{\IfThenElse{(trayectoria[|trayectoria|-1] > trayectoria[|trayectoria|-2]) \hspace{0.15cm} = \hspace{0.15cm} True}{1}{0}})}
+
+\vspace{1.2cm}
 
 \subsection{individuoDecideSiCooperarONo}
 
